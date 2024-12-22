@@ -4,38 +4,25 @@ import jakarta.annotation.PostConstruct;
 import mk.ukim.finki.wp.lab.model.Album;
 import mk.ukim.finki.wp.lab.model.Artist;
 import mk.ukim.finki.wp.lab.model.Song;
-<<<<<<< HEAD
-=======
 import mk.ukim.finki.wp.lab.repository.jpa.AlbumRepositoryJpa;
 import mk.ukim.finki.wp.lab.repository.jpa.ArtistRepositoryJpa;
 import mk.ukim.finki.wp.lab.repository.jpa.SongRepositoryJpa;
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> ebf3e29d4067150ef8e40811429144f9a698769a
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-import java.util.Optional;
-
-@Component
-public class DataHolder {
-    private final songRepositoryJpa songRepository;
-=======
 
 @Component
 public class DataHolder {
     private final SongRepositoryJpa songRepository;
     private final AlbumRepositoryJpa albumRepository;
     private final ArtistRepositoryJpa artistRepository;
->>>>>>> ebf3e29d4067150ef8e40811429144f9a698769a
 
     public static List<Artist> artists = new ArrayList<>();
     public static List<Song> songs = new ArrayList<>();
     public static List<Album> albums = new ArrayList<>();
 
-<<<<<<< HEAD
-=======
     @Autowired
     public DataHolder(SongRepositoryJpa songRepository, AlbumRepositoryJpa albumRepository, ArtistRepositoryJpa artistRepository) {
         this.songRepository = songRepository;
@@ -44,7 +31,6 @@ public class DataHolder {
     }
 
 
->>>>>>> ebf3e29d4067150ef8e40811429144f9a698769a
 
     @PostConstruct
     public void init(){
@@ -65,15 +51,6 @@ public class DataHolder {
         albums.add(album4);
         albums.add(album5);
 
-<<<<<<< HEAD
-        songs.add(new Song("Sweet Child O' Mine", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1987, new ArrayList<>(), Optional.of(album1)));
-        songs.add(new Song("Livin' on a Prayer", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1986, new ArrayList<>(), Optional.of(album2)));
-        songs.add(new Song("Bohemian Rhapsody", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1975, new ArrayList<>(), Optional.of(album3)));
-        songs.add(new Song("Jailhouse Rock", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1957, new ArrayList<>(), Optional.of(album4)));
-        songs.add(new Song("Space Oddity", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1969, new ArrayList<>(), Optional.of(album5)));
-
-
-=======
         songs.add(new Song("Sweet Child O' Mine", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1987, new ArrayList<>(), album1));
         songs.add(new Song("Livin' on a Prayer", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1986, new ArrayList<>(), album2));
         songs.add(new Song("Bohemian Rhapsody", "T" + String.valueOf((long) (Math.random() * 1000)), "Rock", 1975, new ArrayList<>(), album3));
@@ -83,6 +60,5 @@ public class DataHolder {
         artistRepository.saveAll(artists);
         albumRepository.saveAll(albums);
         songRepository.saveAll(songs);
->>>>>>> ebf3e29d4067150ef8e40811429144f9a698769a
     }
 }
