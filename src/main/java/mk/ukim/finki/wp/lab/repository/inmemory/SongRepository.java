@@ -39,7 +39,11 @@ public class SongRepository {
         System.out.println(DataHolder.songs);
     }
 
+<<<<<<< HEAD
     public void addSong(String title, String trackId, String genre, int releaseYear, Optional<Album> album){
+=======
+    public void addSong(String title, String trackId, String genre, int releaseYear, Album album){
+>>>>>>> ebf3e29d4067150ef8e40811429144f9a698769a
         DataHolder.songs.add(new Song(title, trackId, genre, releaseYear, new ArrayList<>(), album));
     }
 }
