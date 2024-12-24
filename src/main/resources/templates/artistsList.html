@@ -35,7 +35,9 @@
     <h2>Select artist:</h2>
     <form action="/artist" method="post">
         <div th:each="artist : ${artists}">
-            <input type="radio" name="artistId" th:value="${artist.id}">
+            <label>
+                <input type="radio" name="artistId" th:value="${artist.id}">
+            </label>
             <span th:text="${artist.firstName}+ ' ' + ${artist.lastName}"></span>
             <br/>
         </div>
@@ -52,3 +54,36 @@
 </aside>
 </body>
 </html>
+
+
+
+
+<!--<div>-->
+<!--    <section class="jumbotron text-center">-->
+<!--        <div class="container">-->
+<!--            <h1 class="jumbotron-heading">Add performer to song</h1>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section>-->
+<!--        <h2>Select artist:</h2>-->
+<!--        <form action="/artist" method="post">-->
+<!--            <div th:each="artist : ${artists}">-->
+<!--                <label>-->
+<!--                    <input type="radio" name="artistId" th:value="${artist.id}">-->
+<!--                </label>-->
+<!--                <span th:text="${artist.firstName}+ ' ' + ${artist.lastName}"></span>-->
+<!--                <br/>-->
+<!--            </div>-->
+<!--            <input type='submit' value='Add artist'>-->
+<!--        </form>-->
+<!--    </section>-->
+<!--    <aside>-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td><b th:text="${trackId}"></b></td>-->
+<!--                <td>2</td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </aside>-->
+<!--</div>-->

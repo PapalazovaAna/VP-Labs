@@ -5,6 +5,7 @@ import mk.ukim.finki.wp.lab.model.exceptions.AlbumDoesNotExistException;
 import mk.ukim.finki.wp.lab.model.exceptions.SongDoesNotExistException;
 import mk.ukim.finki.wp.lab.service.AlbumService;
 import mk.ukim.finki.wp.lab.service.SongService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -37,6 +38,7 @@ public class SongController {
     }
 
     @RequestMapping("/add")
+    @PreAuthorize("hasRole('ADMIN')")
     public String saveSong(@RequestParam String title,
                            @RequestParam String trackId,
                            @RequestParam String genre,
@@ -48,6 +50,7 @@ public class SongController {
     }
 
     @RequestMapping("/edit/{songId}")
+    @PreAuthorize("hasRole('ADMIN') || hasRole('MODERATOR')")
     public String editSong(@PathVariable Long songId,
                            @RequestParam String title,
                            @RequestParam String trackId,
@@ -61,6 +64,7 @@ public class SongController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteSong(@PathVariable Long id){
         this.songService.deleteById(id);
 
@@ -68,6 +72,7 @@ public class SongController {
     }
 
     @GetMapping("/edit-form/{id}")
+    @PreAuthorize("hasRole('ADMIN') || hasRole('MODERATOR')")
     public String getEditSongForm(Model model, @PathVariable Long id) {
         try {
             model.addAttribute("song", songService.findById(id));
@@ -80,6 +85,7 @@ public class SongController {
     }
 
     @GetMapping("/add-form")
+    @PreAuthorize("hasRole('ADMIN')")
     public String getAddSongPage(Model model){
         model.addAttribute("albums", albumService.findAll());
         return "add-song";
@@ -87,6 +93,7 @@ public class SongController {
 
     @PostMapping
     public String showArtists(@RequestParam(required = false) Long selectedSong, HttpServletRequest req){
+        System.out.println("in song post method");
         if (selectedSong != null){
             req.getSession().setAttribute("songId", selectedSong);
             return "redirect:/artist";

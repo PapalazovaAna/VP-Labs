@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/artist")
@@ -20,6 +21,7 @@ public class ArtistController {
 
     @GetMapping
     public String getArtistsPage(@RequestParam(required = false) String error, Model model){
+        System.out.println("in artist get method");
         if (error != null && !error.isEmpty()){
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
@@ -30,6 +32,7 @@ public class ArtistController {
 
     @PostMapping
     public String showDetailsForSong(@RequestParam(required = false) Long artistId, HttpServletRequest req){
+        System.out.println("in artist post method");
         if (artistId != null){
             req.getSession().setAttribute("artistId", artistId);
             return "redirect:/songDetails";

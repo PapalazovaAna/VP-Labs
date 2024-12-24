@@ -1,13 +1,12 @@
 package mk.ukim.finki.wp.lab.bootstrap;
 
 import jakarta.annotation.PostConstruct;
-import mk.ukim.finki.wp.lab.model.Album;
-import mk.ukim.finki.wp.lab.model.Artist;
-import mk.ukim.finki.wp.lab.model.Song;
+import mk.ukim.finki.wp.lab.model.*;
 import mk.ukim.finki.wp.lab.repository.jpa.AlbumRepositoryJpa;
 import mk.ukim.finki.wp.lab.repository.jpa.ArtistRepositoryJpa;
 import mk.ukim.finki.wp.lab.repository.jpa.SongRepositoryJpa;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
